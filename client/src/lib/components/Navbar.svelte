@@ -2,6 +2,7 @@
     import logo from "$lib/assets/logo.png";
 
     let openDropdown = null;
+    let mobileMenuOpen = false;
 
     function show(menu) {
         openDropdown = menu;
@@ -9,6 +10,10 @@
 
     function hide() {
         openDropdown = null;
+    }
+
+    function toggleMobileMenu() {
+        mobileMenuOpen = !mobileMenuOpen;
     }
 </script>
 
@@ -26,8 +31,17 @@
             <img src={logo} alt="Logo" class="logo-img" />
         </a>
 
-        <!-- Navigation Links -->
-        <div class="nav-links">
+        <button
+            class="hamburger"
+            on:click={toggleMobileMenu}
+            aria-label="Toggle menu"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-links" class:mobile-open={mobileMenuOpen}>
             <!-- Search -->
             <button class="nav-item nav-link search-btn">
                 <svg
@@ -137,10 +151,10 @@
     .navbar {
         background-color: #f5f5f0;
         border-bottom: 1px solid #e0e0d8;
-        height: 100px;
+        height: 70px;
         display: flex;
         align-items: center;
-        /* position: sticky; */
+        position: sticky;
         top: 0;
         z-index: 200;
     }
@@ -150,22 +164,57 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: relative;
     }
 
     .logo-img {
-        height: 80px;
-        margin-left: 20px;
+        height: 50px;
+        margin-left: 15px;
+    }
+
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        margin-right: 15px;
+        z-index: 201;
+    }
+
+    .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: #2d2d2d;
+        transition: all 0.3s ease;
+        border-radius: 2px;
     }
 
     .nav-links {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color: #f5f5f0;
+        padding: 1rem;
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.mobile-open {
         display: flex;
-        align-items: center;
-        gap: 2.5rem;
-        margin-right: 2rem;
     }
 
     .nav-item {
         position: relative;
+        width: 100%;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #e0e0d8;
     }
 
     .nav-link,
@@ -173,13 +222,15 @@
         background: none;
         border: none;
         font-family: "Marcellus", serif;
-        font-size: 20px;
+        font-size: 18px;
         letter-spacing: 0.5px;
         color: #2d2d2d;
         cursor: pointer;
         padding: 10px 0;
         transition: color 0.25s ease;
         position: relative;
+        width: 100%;
+        text-align: left;
     }
 
     .nav-link::after,
@@ -205,27 +256,24 @@
     }
 
     .dropdown-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        margin-top: 6px;
-        background: white;
-        min-width: 190px;
-        border: 1px solid #e8e6dd;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        border-radius: 4px;
-        padding: 4px 0;
-        z-index: 400;
+        position: static;
+        background: #fafaf5;
+        width: 100%;
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0.5rem 0 0.5rem 1rem;
+        margin-top: 0.5rem;
     }
 
     .dropdown-item {
         font-family: "Marcellus", serif;
-        padding: 10px 18px;
-        font-size: 17px;
+        padding: 8px 12px;
+        font-size: 16px;
         color: #2e2e2e;
         text-decoration: none;
         display: block;
-        white-space: nowrap;
+        white-space: normal;
         transition:
             background 0.2s ease,
             color 0.2s ease;
@@ -241,15 +289,68 @@
         content: none !important;
     }
 
-    @media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    @media (min-width: 769px) {
         .navbar {
             height: 100px;
         }
+
         .logo-img {
-            height: 55px;
+            height: 80px;
+            margin-left: 20px;
         }
-        .nav-links {
+
+        .hamburger {
             display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: row;
+            position: static;
+            padding: 0;
+            margin-right: 2rem;
+            gap: 2.5rem;
+            align-items: center;
+            max-height: none;
+            overflow: visible;
+            box-shadow: none;
+        }
+
+        .nav-item {
+            width: auto;
+            padding: 0;
+            border-bottom: none;
+        }
+
+        .nav-link,
+        .search-btn {
+            font-size: 20px;
+            text-align: center;
+            width: auto;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 6px;
+            background: white;
+            min-width: 190px;
+            border: 1px solid #e8e6dd;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            padding: 4px 0;
+            z-index: 400;
+        }
+
+        .dropdown-item {
+            font-size: 17px;
+            padding: 10px 18px;
+            white-space: nowrap;
         }
     }
 </style>
