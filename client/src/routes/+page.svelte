@@ -73,7 +73,7 @@
         position: relative;
         width: 100%;
         overflow: hidden;
-        background-image: url('$lib/assets/pic1.jpg');
+        background-image: url("$lib/assets/pic1.jpg");
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;

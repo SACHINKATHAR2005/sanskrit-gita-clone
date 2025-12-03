@@ -154,8 +154,7 @@
         height: 70px;
         display: flex;
         align-items: center;
-        position: sticky;
-        top: 0;
+        position: relative;
         z-index: 200;
     }
 
