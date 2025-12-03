@@ -137,10 +137,10 @@
     .navbar {
         background-color: #f5f5f0;
         border-bottom: 1px solid #e0e0d8;
-        height: 150px;
+        height: 100px;
         display: flex;
         align-items: center;
-        position: sticky;
+        /* position: sticky; */
         top: 0;
         z-index: 200;
     }

@@ -103,7 +103,7 @@
 <style>
     .footer {
         background: url("/src/lib/assets/footerimg.png") center/cover;
-        padding: 2.5rem 2rem;
+        padding: 2rem 1rem;
         position: relative;
     }
 
@@ -121,18 +121,18 @@
     .footer-content {
         position: relative;
         z-index: 2;
-        max-width: 1200px;
+        max-width: 1000px;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1.5rem;
+        /* gap: 1rem; */
     }
 
     .connect-section {
         display: flex;
         align-items: center;
-        gap: 1.5rem;
+        gap: 1rem;
     }
 
     .connect-title {
@@ -141,7 +141,7 @@
         font-weight: 400;
         color: #ffffff;
         margin: 0;
-        letter-spacing: 2px;
+        letter-spacing: 1px;
     }
 
     .social-icons {
@@ -151,8 +151,8 @@
     }
 
     .social-icons a {
-        width: 60px;
-        height: 60px;
+        width: 45px;
+        height: 45px;
         border: 2px solid #ffffff;
         border-radius: 50%;
         display: flex;
@@ -174,11 +174,11 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 1rem 0;
+        padding: 0.5rem 0;
     }
 
     .footer-logo {
-        height: 140px;
+        height: 120px;
         width: auto;
         object-fit: contain;
     }
@@ -188,7 +188,7 @@
         font-size: 2.5rem;
         font-weight: 400;
         color: #d4c5a0;
-        letter-spacing: 3px;
+        letter-spacing: 1px;
         text-align: center;
         margin-top: 0.5rem;
     }
