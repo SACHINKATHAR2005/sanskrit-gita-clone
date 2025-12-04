@@ -1,18 +1,49 @@
 <script>
-    const chapters = Array.from({ length: 18 }, (_, i) => ({ id: i + 1 }));
+    import { onMount } from "svelte";
+    import { getAllChapters } from "$lib/api/bhagavadgita.js";
+
+    let chapters = [];
+    let loading = true;
+
+    onMount(async () => {
+        chapters = await getAllChapters();
+        loading = false;
+    });
+
+    function handleChapterClick(chapterId) {
+        window.location.href = `/chapter/${chapterId}`;
+    }
 </script>
 
 <section class="chapters-bg">
     <div class="chapters-grid">
-        {#each chapters as chapter}
-            <button class="chapter-tile" aria-label="Chapter {chapter.id}">
-                <div class="tile-img"></div>
-
-                <div class="band">
-                    <span>{chapter.id}</span>
-                </div>
-            </button>
-        {/each}
+        {#if loading}
+            {#each Array.from({ length: 18 }) as _, i}
+                <button
+                    class="chapter-tile loading"
+                    disabled
+                    aria-label="Loading chapter {i + 1}"
+                >
+                    <div class="tile-img"></div>
+                    <div class="band">
+                        <span>{i + 1}</span>
+                    </div>
+                </button>
+            {/each}
+        {:else}
+            {#each chapters as chapter}
+                <button
+                    class="chapter-tile"
+                    aria-label="Chapter {chapter.number}"
+                    on:click={() => handleChapterClick(chapter.id)}
+                >
+                    <div class="tile-img"></div>
+                    <div class="band">
+                        <span>{chapter.number}</span>
+                    </div>
+                </button>
+            {/each}
+        {/if}
     </div>
 </section>
 
@@ -48,6 +79,11 @@
 
     .chapter-tile:hover {
         transform: scale(1.06);
+    }
+
+    .chapter-tile.loading {
+        opacity: 0.6;
+        cursor: wait;
     }
 
     .tile-img {

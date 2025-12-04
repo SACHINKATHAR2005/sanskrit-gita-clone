@@ -151,7 +151,7 @@
     .navbar {
         background-color: #f5f5f0;
         border-bottom: 1px solid #e0e0d8;
-        height: 70px;
+        height: 50px;
         display: flex;
         align-items: center;
         position: relative;
@@ -199,7 +199,7 @@
         left: 0;
         right: 0;
         background-color: #f5f5f0;
-        padding: 1rem;
+        padding: 0.5rem;
         max-height: calc(100vh - 70px);
         overflow-y: auto;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
