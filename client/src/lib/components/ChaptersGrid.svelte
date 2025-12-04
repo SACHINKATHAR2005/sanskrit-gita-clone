@@ -18,7 +18,6 @@
 
 <style>
     .chapters-bg {
-        background: url("/src/lib/assets/pic1.jpg") center/cover fixed;
         padding: 5rem 0;
     }
 

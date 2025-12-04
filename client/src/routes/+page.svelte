@@ -1,7 +1,6 @@
 <script>
     import gitaBanner from "$lib/assets/gita_banner.png";
     import gitaOpen from "$lib/assets/gita_open.png";
-    import pic1 from "$lib/assets/pic1.jpg";
     import ChaptersGrid from "$lib/components/ChaptersGrid.svelte";
     import Footer from "$lib/components/Footer.svelte";
 </script>
@@ -17,7 +16,7 @@
     />
 </svelte:head>
 
-<div class="page-wrapper">
+<div class="relative w-full overflow-hidden">
     <div class="relative w-full h-[620px]">
         <div
             class="absolute top-0 left-0 right-0 z-20 bg-white/55 h-[120px] border-t border-[#C9D6C0]/40"
@@ -69,17 +68,6 @@
 <Footer />
 
 <style>
-    .page-wrapper {
-        position: relative;
-        width: 100%;
-        overflow: hidden;
-        background-image: url("$lib/assets/pic1.jpg");
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-    }
-
     @media (max-width: 768px) {
         h1 {
             font-size: 54px !important;

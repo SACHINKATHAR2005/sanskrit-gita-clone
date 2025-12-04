@@ -1,1 +1,10 @@
 @import 'tailwindcss';
+
+.layout-bg {
+    min-height: 100vh;
+    background-image: url('/src/lib/assets/pic1.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}

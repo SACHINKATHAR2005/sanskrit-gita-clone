@@ -11,6 +11,8 @@
 	<link rel="icon" href={logo} />
 </svelte:head>
 
-<Navbar />
+<div class="layout-bg">
+	<Navbar />
 
-{@render children()}
+	{@render children()}
+</div>
