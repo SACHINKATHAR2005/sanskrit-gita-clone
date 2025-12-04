@@ -1,4 +1,4 @@
-const BASE_URL = typeof window === 'undefined' || window.location.hostname === 'localhost'
+const BASE_URL = (typeof window !== 'undefined' && window.location.hostname === 'localhost')
     ? '/api/geeta.php'
     : 'https://sanskrit.ie/api/geeta.php';
 
