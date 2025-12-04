@@ -1,4 +1,6 @@
-const BASE_URL = '/api/geeta.php';
+const BASE_URL = typeof window === 'undefined' || window.location.hostname === 'localhost'
+    ? '/api/geeta.php'
+    : 'https://sanskrit.ie/api/geeta.php';
 
 export async function getAllChapters(fetchFn = fetch) {
     try {
