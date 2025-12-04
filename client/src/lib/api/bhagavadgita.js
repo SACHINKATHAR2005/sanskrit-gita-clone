@@ -1,6 +1,4 @@
-const BASE_URL = (typeof window !== 'undefined' && window.location.hostname === 'localhost')
-    ? '/api/geeta.php'
-    : 'https://sanskrit.ie/api/geeta.php';
+const BASE_URL = '/api/geeta';
 
 console.log('🔗 BASE_URL:', BASE_URL);
 console.log('🌍 Environment:', typeof window !== 'undefined' ? window.location.hostname : 'SSR');
